@@ -14,9 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::group(['prefix' => 'admin/entry','namespace' => 'Admin'], function () {
+    Route::get('login', 'EntryController@loginFrom');
 
+    Route::post('loginFrom', 'EntryController@login');
+});
 
-Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
+Route::group(['middleware' => 'admin.auth','prefix' => 'admin','namespace' => 'Admin'], function () {
      Route::get('logout', 'BaseController@logout');
     Route::group(['prefix' => 'index'], function () {
         Route::get('index', 'IndexController@index');
@@ -26,9 +30,5 @@ Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
         Route::post('changePassword', 'MemberController@changePassword');
     });
 
-    Route::group(['prefix' => 'entry'], function () {
-        Route::get('login', 'EntryController@loginFrom');
 
-        Route::post('loginFrom', 'EntryController@login');
-    });
 });

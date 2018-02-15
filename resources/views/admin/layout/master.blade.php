@@ -63,12 +63,15 @@
                         <input type="text" class="search-query span2" placeholder="Search" />
                     </form>
                     <ul class="nav pull-right">
+                        @if(Auth::guard("admin")->user())
                         <li>
                             <a href="/admin/member/passwordFrom">{{Auth::guard("admin")->user()->name}}</a>
                         </li>
+                        @else
                         <li>
                             <a href="/admin/logout">退出</a>
                         </li>
+                        @endif
                     </ul>
                 </div>
             </div>
@@ -84,19 +87,19 @@
 <script>
     $('#flash-overlay-modal').modal();
 </script>
-<script type="text/javascript">
-    var uirs = window.location.pathname;
-    var objul=document.getElementsByTagName("ul")[3];
-    var lis=objul.getElementsByTagName("li");
-    for(var i=0;i<lis.length;i++){
-            var hrefs=lis[i].getElementsByTagName("a")[0];
-            if(hrefs != undefined){
-                var sliceNum = hrefs.toString().search("/admin");
-                if(hrefs.toString().slice(sliceNum) == uirs){
-                    lis[i].className="active"
-                }
-            }
-    }
-</script>
+{{--<script type="text/javascript">--}}
+    {{--var uirs = window.location.pathname;--}}
+    {{--var objul=document.getElementsByTagName("ul")[3];--}}
+    {{--var lis=objul.getElementsByTagName("li");--}}
+    {{--for(var i=0;i<lis.length;i++){--}}
+            {{--var hrefs=lis[i].getElementsByTagName("a")[0];--}}
+            {{--if(hrefs != undefined){--}}
+                {{--var sliceNum = hrefs.toString().search("/admin");--}}
+                {{--if(hrefs.toString().slice(sliceNum) == uirs){--}}
+                    {{--lis[i].className="active"--}}
+                {{--}--}}
+            {{--}--}}
+    {{--}--}}
+{{--</script>--}}
 </body>
 </html>

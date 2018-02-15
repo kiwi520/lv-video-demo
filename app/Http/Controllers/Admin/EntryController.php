@@ -7,6 +7,11 @@ use Auth;
 
 class EntryController extends BaseController
 {
+//    public function __construct()
+//    {
+//        $this->middleware("admin.auth")->except(['loginFrom','login']);
+//    }
+
     public function index(){
         dd(Auth::guard("admin")->user()->name);
     }
