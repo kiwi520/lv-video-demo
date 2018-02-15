@@ -6,11 +6,13 @@
     <title>Dashboard - kiwi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css') }}">
+    {{--<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">--}}
     <link href="{{ asset('admin/css/bootstrap-responsive.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/css/site.css') }}" rel="stylesheet">
     <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
     <script src="{{ asset('admin/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('admin/js/bootstrap.min.js') }}"></script>
+    {{--<script src="{{ asset('admin/js/bootstrap.min.js') }}"></script>--}}
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="{{ asset('admin/js/site.js') }}"></script>
 </head>
 <body>
@@ -63,15 +65,13 @@
                         <input type="text" class="search-query span2" placeholder="Search" />
                     </form>
                     <ul class="nav pull-right">
-                        @if(Auth::guard("admin")->user())
+
                         <li>
                             <a href="/admin/member/passwordFrom">{{Auth::guard("admin")->user()->name}}</a>
                         </li>
-                        @else
                         <li>
                             <a href="/admin/logout">退出</a>
                         </li>
-                        @endif
                     </ul>
                 </div>
             </div>
@@ -87,19 +87,19 @@
 <script>
     $('#flash-overlay-modal').modal();
 </script>
-{{--<script type="text/javascript">--}}
-    {{--var uirs = window.location.pathname;--}}
-    {{--var objul=document.getElementsByTagName("ul")[3];--}}
-    {{--var lis=objul.getElementsByTagName("li");--}}
-    {{--for(var i=0;i<lis.length;i++){--}}
-            {{--var hrefs=lis[i].getElementsByTagName("a")[0];--}}
-            {{--if(hrefs != undefined){--}}
-                {{--var sliceNum = hrefs.toString().search("/admin");--}}
-                {{--if(hrefs.toString().slice(sliceNum) == uirs){--}}
-                    {{--lis[i].className="active"--}}
-                {{--}--}}
-            {{--}--}}
-    {{--}--}}
-{{--</script>--}}
+<script type="text/javascript">
+    var uirs = window.location.pathname;
+    var objul=document.getElementsByTagName("ul")[3];
+    var lis=objul.getElementsByTagName("li");
+    for(var i=0;i<lis.length;i++){
+            var hrefs=lis[i].getElementsByTagName("a")[0];
+            if(hrefs != undefined){
+                var sliceNum = hrefs.toString().search("/admin");
+                if(hrefs.toString().slice(sliceNum) == uirs){
+                    lis[i].className="active"
+                }
+            }
+    }
+</script>
 </body>
 </html>

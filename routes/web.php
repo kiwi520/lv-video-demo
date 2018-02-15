@@ -30,5 +30,6 @@ Route::group(['middleware' => 'admin.auth','prefix' => 'admin','namespace' => 'A
         Route::post('changePassword', 'MemberController@changePassword');
     });
 
-
+     //标签管理
+    Route::resource("tag","TagController");
 });
