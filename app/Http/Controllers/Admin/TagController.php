@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\TagRequst;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Tag;
 
@@ -64,7 +63,7 @@ class TagController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view("admin.tag.edit",compact("id"));
     }
 
     /**
@@ -74,9 +73,15 @@ class TagController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TagRequst $request, $id)
     {
-        //
+        if(is_numeric($id)){
+            $model = Tag::find($id);
+            $model->name = $request->input("name");
+            $model->save();
+
+            return redirect("/admin/tag");
+        }
     }
 
     /**

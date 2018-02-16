@@ -26,7 +26,7 @@
                     {{$datum->name}}
                 </td>
                 <td>
-                    <a href="/admin/tag/{{$datum['id']}}" class="btn btn-primary">编辑</a>
+                    <a href="/admin/tag/{{$datum['id']}}/edit" class="btn btn-primary">编辑</a>
                     <a href="javascript:; " onclick ='del({{$datum["id"]}})' class="btn btn-danger">删除</a>
                 </td>
 

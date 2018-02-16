@@ -36,11 +36,12 @@
                 标签管理
             </li>
             <li>
-                <a href="/admin/tag/create"><i class="icon-white icon-user"></i>创建标签</a>
+                <a href="/admin/tag"><i class="icon-cog"></i>标签列表</a>
             </li>
             <li>
-                <a href="settings.htm"><i class="icon-cog"></i> Settings</a>
+                <a href="/admin/tag/create"><i class="icon-white icon-user"></i>创建标签</a>
             </li>
+
 
             {{--<li class="divider">--}}
             {{--</li>--}}
