@@ -42,6 +42,16 @@
                 <a href="/admin/tag/create"><i class="icon-white icon-user"></i>创建标签</a>
             </li>
 
+            <li class="nav-header">
+                视频课程管理
+            </li>
+            <li>
+                <a href="/admin/lesson"><i class="icon-film"></i>视频课程列表</a>
+            </li>
+            <li>
+                <a href="/admin/lesson/create"><i class="icon-white icon-camera"></i>创建视频课程</a>
+            </li>
+
 
             {{--<li class="divider">--}}
             {{--</li>--}}
