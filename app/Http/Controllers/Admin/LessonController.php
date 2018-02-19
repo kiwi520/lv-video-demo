@@ -39,7 +39,7 @@ class LessonController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+//        dd($request->all());
     }
 
     /**
@@ -88,12 +88,43 @@ class LessonController extends Controller
     }
 
 
-    public function upload(Request $request){
-        if($request['preview']){
-            echo  1;
+    public function uploadImage(Request $request){
+        if (!$request->hasFile('file')) {
+            return response()->json([], 500, '无法获取上传文件');
         }
+        $file = $request->file('file');
 
-        echo 2;
+        if ($file->isValid()) {
+            // 获取文件相关信息
+            $originalName = $file->getClientOriginalName(); // 文件原名
+            $ext = $file->getClientOriginalExtension();     // 扩展名
+            $realPath = $file->getRealPath();   //临时文件的绝对路径
+            $type = $file->getClientMimeType();     // image/jpeg
+
+            // 上传文件
+            $filename = date('Ymd/His').$originalName;
+            // 使用我们新建的uploads本地存储空间（目录）
+            $path = $file->store('video-desc', 'public');
+            return response()->json([
+                'status_code' => 200,
+                'message' => 'success',
+                'photo' => $path,
+                'name' => $originalName,
+            ]);
+
+        } else {
+            return response()->json([], 500, '文件未通过验证');
+        }
+    }
+
+
+
+//        $input = $request->all();
+//        $input['preview'] = time().'.jpg';
+//        $request->image->move(public_path('images/admin'), $input['preview']);
+//
+//
+//        echo 1;
         //生成路径，图片存储
 //        $ext = $request->preview->getClientOriginalExtension();
 //////        $cover_path = "images/" . time() . $ext;
@@ -102,5 +133,5 @@ class LessonController extends Controller
 ////        Image::make($request->preview)->save(public_path($src));
 //
 //        echo $ext;
-    }
+//    }
 }

@@ -35,5 +35,5 @@ Route::group(['middleware' => 'admin.auth','prefix' => 'admin','namespace' => 'A
 
     //课程管理
     Route::resource("lesson","LessonController");
-    Route::post("lesson/upload","LessonController@upload");
+    Route::post("lesson/uploads","LessonController@uploadImage");
 });

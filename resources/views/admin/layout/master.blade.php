@@ -9,8 +9,10 @@
     {{--<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet">--}}
     <link href="{{ asset('admin/css/bootstrap-responsive.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/css/site.css') }}" rel="stylesheet">
+    @yield("css")
     <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-    <script src="{{ asset('admin/js/jquery.min.js') }}"></script>
+    {{--<script src="{{ asset('admin/js/jquery.min.js') }}"></script>--}}
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
     {{--<script src="{{ asset('admin/js/bootstrap.min.js') }}"></script>--}}
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="{{ asset('admin/js/site.js') }}"></script>
@@ -87,6 +89,7 @@
 <script>
     $('#flash-overlay-modal').modal();
 </script>
+@yield("js")
 <script type="text/javascript">
     var uirs = window.location.pathname;
     var objul=document.getElementsByTagName("ul")[3];
