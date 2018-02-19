@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Lesson;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Faker\Provider\Image;
+use Image;
 
 class LessonController extends Controller
 {
@@ -39,7 +39,13 @@ class LessonController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->all());
+
+        $model = new Lesson();
+        if($model->create($request->all())){
+            flash('标签添加成功！！！')->overlay();
+
+            return redirect("admin/lesson");
+        };
     }
 
     /**
@@ -104,11 +110,14 @@ class LessonController extends Controller
             // 上传文件
             $filename = date('Ymd/His').$originalName;
             // 使用我们新建的uploads本地存储空间（目录）
-            $path = $file->store('video-desc', 'public');
+            $path = $file->store('video-desc', 'lesson');
+            $img = Image::make('lesson/'.$path)->resize(200, 200);
+            $img->save('lesson/'.$path);
             return response()->json([
                 'status_code' => 200,
                 'message' => 'success',
-                'photo' => $path,
+                'photo' => asset('lesson/'.$path),
+                'origin' => 'lesson/'.$path,
                 'name' => $originalName,
             ]);
 

@@ -42,17 +42,21 @@ return [
     */
 
     'disks' => [
+        'lesson' => [
+            'driver' => 'local',
+            'root' => 'lesson'
+        ],
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
+            'root' => storage_path('app')
         ],
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
+            'root' => storage_path(''),
             'url' => env('APP_URL').'/storage',
-            'visibility' => 'public',
+            'visibility' => 'public'
         ],
 
         's3' => [
@@ -61,8 +65,8 @@ return [
             'secret' => env('AWS_SECRET'),
             'region' => env('AWS_REGION'),
             'bucket' => env('AWS_BUCKET'),
-        ],
+        ]
 
-    ],
+    ]
 
 ];

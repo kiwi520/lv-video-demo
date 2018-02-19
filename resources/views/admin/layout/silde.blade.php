@@ -53,6 +53,17 @@
             </li>
 
 
+            <li class="nav-header">
+                视频管理
+            </li>
+            <li>
+                <a href="/admin/video"><i class="icon-film"></i>视频课程列表</a>
+            </li>
+            <li>
+                <a href="/admin/video/create"><i class="icon-white icon-camera"></i>创建视频课程</a>
+            </li>
+
+
             {{--<li class="divider">--}}
             {{--</li>--}}
             {{--<li>--}}
