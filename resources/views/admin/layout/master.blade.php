@@ -3,6 +3,7 @@
 <html lang="en"><!--<![endif]-->
 <head>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>Dashboard - kiwi</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css') }}">

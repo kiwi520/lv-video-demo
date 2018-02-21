@@ -36,4 +36,9 @@ Route::group(['middleware' => 'admin.auth','prefix' => 'admin','namespace' => 'A
     //课程管理
     Route::resource("lesson","LessonController");
     Route::post("lesson/uploads","LessonController@uploadImage");
+
+    //视频管理
+    Route::resource("video","VideoController");
+    Route::post("video/uploads","VideoController@uploadVideo");
+    Route::post("video/merge","VideoController@videoMerge");
 });

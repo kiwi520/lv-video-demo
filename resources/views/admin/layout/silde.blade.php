@@ -7,21 +7,6 @@
             <li>
                 <a href="/admin/index/index"><i class="icon-home"></i> 欢迎</a>
             </li>
-            {{--<li>--}}
-                {{--<a href="projects.htm"><i class="icon-folder-open"></i> Projects</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a href="tasks.htm"><i class="icon-check"></i> Tasks</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a href="messages.htm"><i class="icon-envelope"></i> Messages</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a href="files.htm"><i class="icon-file"></i> Files</a>--}}
-            {{--</li>--}}
-            {{--<li>--}}
-                {{--<a href="activity.htm"><i class="icon-list-alt"></i> Activity</a>--}}
-            {{--</li>--}}
             <li class="nav-header">
                 账户管理
             </li>
@@ -57,10 +42,10 @@
                 视频管理
             </li>
             <li>
-                <a href="/admin/video"><i class="icon-film"></i>视频课程列表</a>
+                <a href="/admin/video"><i class="icon-film"></i>视频列表</a>
             </li>
             <li>
-                <a href="/admin/video/create"><i class="icon-white icon-camera"></i>创建视频课程</a>
+                <a href="/admin/video/create"><i class="icon-white icon-camera"></i>创建视频</a>
             </li>
 
 

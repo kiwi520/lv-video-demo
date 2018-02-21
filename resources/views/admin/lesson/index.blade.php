@@ -13,6 +13,9 @@
                     视频课程名称
                 </th>
                 <th>
+                    视频数量
+                </th>
+                <th>
                     操作
                 </th>
             </tr>
@@ -24,6 +27,9 @@
                         </td>
                         <td>
                             {{$datum->title}}
+                        </td>
+                        <td>
+                            {{$datum->videos()->count()}}
                         </td>
                         <td>
                             <a href="/admin/lesson/{{$datum['id']}}/edit" class="btn btn-primary">编辑</a>

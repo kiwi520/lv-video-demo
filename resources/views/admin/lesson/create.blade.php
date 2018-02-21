@@ -28,7 +28,7 @@
                     <div class="controls">
                             <input type="file" name="file" id="file_upload"/>
                             <br/>
-                            <button type="button"  class="btn btn-success btn-image">Image Upload</button>
+                            <button type="button"  class="btn btn-success btn-image">上传图片</button>
                             <img id="dis-img" style="display: none;"alt="" />
                         <input type="hidden" name="preview" id="preview">
                     </div>
@@ -71,11 +71,6 @@
             </fieldset>
         </form>
     </div>
-
-    <script type="text/javascript">
-
-
-    </script>
 @endsection
 @section("js")
     {{--<script src="{{ asset('admin/js/fileinput.min.js') }}" type="text/javascript"></script>--}}
