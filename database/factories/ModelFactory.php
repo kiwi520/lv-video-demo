@@ -12,7 +12,7 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\User::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     static $password;
 
     return [
@@ -25,10 +25,10 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 
 
 $factory->define(App\Models\Admin::class, function (Faker\Generator $faker) {
-    static $password;
+//    static $password;
 
     return [
-        'name' => $faker->name,
-        'password' => $password ?: $password = bcrypt('secret'),
+        'name' => admin,
+        'password' =>  $password = bcrypt('secret'),
     ];
 });

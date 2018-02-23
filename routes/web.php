@@ -11,9 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+Route::get('/', 'StaticPagesController@home')->name('home');
+Route::get('/help', 'StaticPagesController@help')->name('help');
+Route::get('/about', 'StaticPagesController@about')->name('about');
+
+Route::get('/signup', 'UsersController@create')->name('signup');
+
+
 Route::group(['prefix' => 'admin/entry','namespace' => 'Admin'], function () {
     Route::get('login', 'EntryController@loginFrom');
 
@@ -41,4 +48,27 @@ Route::group(['middleware' => 'admin.auth','prefix' => 'admin','namespace' => 'A
     Route::resource("video","VideoController");
     Route::post("video/uploads","VideoController@uploadVideo");
     Route::post("video/merge","VideoController@videoMerge");
+});
+
+
+
+Route::group(['prefix' => 'api','namespace' => 'Api'], function () {
+    //标签接口
+    Route::group(['prefix' => 'tag'], function () {
+        Route::get('list', 'TagController@lists');
+    });
+
+    //课程视频接口
+    Route::group(['prefix' => 'lesson'], function () {
+        Route::get('list', 'LessonController@lists');
+    });
+
+    //课程视频接口
+    Route::group(['prefix' => 'video'], function () {
+        Route::get('list', 'VideoController@lists');
+        Route::get('hot', 'VideoController@getHost');
+        Route::get('com', 'VideoController@getCommend');
+        Route::get('/{lid}', 'VideoController@getLessons')->where('lid', '[0-9]+');
+    });
+
 });
