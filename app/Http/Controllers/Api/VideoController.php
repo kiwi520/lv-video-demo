@@ -63,6 +63,7 @@ class VideoController extends Controller
             }
             if(count($new_hids)>0){
                 $data = DB::table('videos')->whereIn("lesson_id",$new_hids)->get();
+                dd($data);
                 if(count($data)>0){
                     return response()->json([
                         'status_code' => 200,
