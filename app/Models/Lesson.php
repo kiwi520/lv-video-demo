@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lesson extends Model
 {
-    protected $guarded = ["_token","file"];
+    protected $guarded = ["_token","file",'tag_id'];
 
     /**
      *  与视频模型一对多关联

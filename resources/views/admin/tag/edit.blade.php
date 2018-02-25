@@ -22,7 +22,7 @@
                 <div class="control-group">
                     <label class="control-label" for="textarea">标签名称</label>
                     <div class="controls">
-                        <input name="name" type="text" class="input-xlarge" id="input01">
+                        <input name="title" type="text" class="input-xlarge" id="input01">
                     </div>
                 </div>
                 {{ method_field('PUT') }}

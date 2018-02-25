@@ -59,13 +59,15 @@ Route::group(['prefix' => 'api','namespace' => 'Api'], function () {
     });
 
     //课程视频接口
-    Route::group(['prefix' => 'lesson'], function () {
-        Route::get('list', 'LessonController@lists');
-    });
+//    Route::group(['prefix' => '/lesson'], function () {
+        Route::get('/lesson/{tid}', 'LessonController@lesson')->where('tid', '[0-9]+');
+        Route::get('/comLesson/{row}', 'LessonController@comLesson')->where('row', '[0-9]+');
+        Route::get('/hotLesson/{row}', 'LessonController@hotLesson')->where('row', '[0-9]+');
+//    });
 
     //课程视频接口
-    Route::group(['prefix' => 'video'], function () {
-        Route::get('list', 'VideoController@lists');
+    Route::group(['prefix' => 'videos'], function (){
+        Route::get('/{lessonId}', 'VideoController@lists');
         Route::get('hot', 'VideoController@getHost');
         Route::get('com', 'VideoController@getCommend');
         Route::get('/{lid}', 'VideoController@getLessons')->where('lid', '[0-9]+');

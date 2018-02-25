@@ -104,6 +104,7 @@ class VideoController extends Controller
                     'message' => 'success'
                 ]);
             }else{
+                Video::destroy($id);
                 return response()->json([
                     'status_code' => 404,
                     'message' => 'not fond'

@@ -15,6 +15,18 @@
                         <input name="title" type="text" class="input-xlarge" id="input01">
                     </div>
                 </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="textarea">视频所属课程</label>
+                    <div class="controls">
+                        <select name="tag_id" class="selectpicker">
+                            @foreach($tags as $v)
+                                <option value ="{{$v["id"]}}">{{$v["title"]}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
                 {{csrf_field()}}
                 <div class="control-group">
                     <label class="control-label" for="textarea">视频课程介绍</label>

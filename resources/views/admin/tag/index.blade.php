@@ -23,7 +23,7 @@
                     {{$datum->id}}
                 </td>
                 <td>
-                    {{$datum->name}}
+                    {{$datum->title}}
                 </td>
                 <td>
                     <a href="/admin/tag/{{$datum['id']}}/edit" class="btn btn-primary">编辑</a>

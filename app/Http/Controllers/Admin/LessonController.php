@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Lesson;
+use App\Models\Tag;
+use App\Models\TagLesson;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Image;
@@ -28,7 +30,8 @@ class LessonController extends Controller
      */
     public function create()
     {
-        return view("admin.lesson.create");
+        $tags = Tag::get(["id","title"]);
+        return view("admin.lesson.create",compact("tags"));
     }
 
     /**
@@ -41,10 +44,22 @@ class LessonController extends Controller
     {
 
         $model = new Lesson();
-        if($model->create($request->all())){
-            flash('标签添加成功！！！')->overlay();
+        if($ids = $model->create($request->all())){
+            if(is_numeric($ids->id)){
+                $lesson_id = $ids->id;
+                $tag_id = $request->input("tag_id");
+                if($lesson_id && $tag_id){
+                    $lt = new TagLesson();
+                    $lt->tag_id = $tag_id;
+                    $lt->lesson_id = $lesson_id;
+                    $lt->save();
 
-            return redirect("admin/lesson");
+                    flash('标签添加成功！！！')->overlay();
+
+                    return redirect("admin/lesson");
+                }
+            }
+
         };
     }
 
