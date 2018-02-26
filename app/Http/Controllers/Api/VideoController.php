@@ -33,10 +33,18 @@ class VideoController extends CommonController
      * @param $lid lesson_id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getLessons($lid){
+    public function getLessons($lid,Request $request){
         if(is_numeric($lid)){
-            $data = DB::table('videos')->where(["lesson_id"=>$lid])->get();
-            if(count($data)>0){
+            $data = DB::table('videos')->where(["lesson_id"=>$lid])->get()->toArray();
+            if($data){
+//                dd($data);
+                foreach ($data as $k => $v){
+                    if($k == 'path'){
+                        $host = $request->server('HTTP_HOST');
+                        $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
+                        $v->path = $http_type.$host.$v->path;
+                    }
+                }
                 return $this->response($data);
             }else{
                 return $this->response($data,404);

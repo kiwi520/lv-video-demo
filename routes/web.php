@@ -67,7 +67,7 @@ Route::group(['prefix' => 'api','namespace' => 'Api'], function () {
 
     //课程视频接口
     Route::group(['prefix' => 'videos'], function (){
-        Route::get('/{lessonId}', 'VideoController@lists');
+//        Route::get('/{lessonId}', 'VideoController@lists');
         Route::get('hot', 'VideoController@getHost');
         Route::get('com', 'VideoController@getCommend');
         Route::get('/{lid}', 'VideoController@getLessons')->where('lid', '[0-9]+');
