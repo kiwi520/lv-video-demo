@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /public/videos/*
+/public/lesson/*
 /public/storage
 /storage/*.key
 /storage/app
