@@ -13,7 +13,7 @@ class TagController extends CommonController
      * @return \Illuminate\Http\JsonResponse
      */
     public function lists(){
-        $data = DB::table('tags')->select('id', 'name')->get()->toArray();
+        $data = DB::table('tags')->select('id', 'title')->get()->toArray();
         if(count($data)>0){
             return $this->response($data);
 //            return response()->json([
