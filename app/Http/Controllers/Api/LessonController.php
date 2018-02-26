@@ -44,10 +44,16 @@ class LessonController extends CommonController
     }
 
 
-    public function hotLesson($row){
+    public function hotLesson($row,Request $request){
         if(is_numeric($row)){
             $data = Lesson::where('iscommend',1)->limit($row)->get();
-
+            foreach ($data as $k=> $v){
+                if($k == 'preview'){
+                    $host = $request->server('HTTP_HOST');
+                    $http_type = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https://' : 'http://';
+                    $v['preview'] = $http_type.$host.'/'.$v['preview'];
+                }
+            }
             return $this->response($data);
         }
 
