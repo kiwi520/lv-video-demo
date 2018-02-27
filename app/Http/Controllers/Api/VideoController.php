@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
+use FFMpeg\FFMpeg;
+use FFMpeg\Coordinate\TimeCode;
+use FFMpeg\Coordinate\Dimension;
+use FFMpeg\Format\Video\X264;
 class VideoController extends CommonController
 {
     /**
@@ -104,4 +108,30 @@ class VideoController extends CommonController
 //            }
 //        }
 //    }
+
+
+    public function range($offset = 30,$path ='',$maxlength = 10){
+        $path = public_path()."/videos/1519188479040.mp4";
+//        $ffmpeg_path       = Config::get("phpFFmpeg.ffmpeg"); //ffmpeg运行的路径
+//        $ffprobe_path      = Config::get("phpFFmpeg.ffprobe"); //ffprobe运行路径
+        $logger = public_path()."/public/ffpmeg.log";
+//        dd($logger);
+        $ffmpeg = FFMpeg::create(array(
+            'ffmpeg.binaries'  => '/usr/bin/ffmpeg',
+            'ffprobe.binaries' => '/usr/bin/ffprobe',
+            'timeout'          => 3600, // The timeout for the underlying process
+            'ffmpeg.threads'   => 12,   // The number of threads that FFMpeg should use
+        ));
+        $video = $ffmpeg->open($path);
+
+
+        $video->filters()->clip(TimeCode::fromSeconds($offset), TimeCode::fromSeconds($maxlength));
+//        $video->resize(new Dimension(320, 240));
+//        $video->synchronize();
+//        $data = $video->save(new X264(),substr($path,0,-8).'.mp4');
+        $format = new X264();
+        $data = $video->save($format,public_path().'/export-x264.mp4');
+        dd($data);
+        return $this->response($data);
+    }
 }

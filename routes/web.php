@@ -63,6 +63,7 @@ Route::group(['prefix' => 'api','namespace' => 'Api'], function () {
         Route::get('/lesson/{tid}', 'LessonController@lesson')->where('tid', '[0-9]+');
         Route::get('/comLesson/{row}', 'LessonController@comLesson')->where('row', '[0-9]+');
         Route::get('/hotLesson/{row}', 'LessonController@hotLesson')->where('row', '[0-9]+');
+        Route::get('/range/', 'VideoController@range');
 //    });
 
     //课程视频接口
