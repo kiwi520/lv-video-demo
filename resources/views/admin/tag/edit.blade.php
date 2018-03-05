@@ -2,7 +2,7 @@
 @section("content")
     <div class="span9">
         <h1>
-            添加标签
+            编辑标签
         </h1>
         {{--<ul class="files zebra-list">--}}
             {{--<li>--}}
@@ -22,7 +22,7 @@
                 <div class="control-group">
                     <label class="control-label" for="textarea">标签名称</label>
                     <div class="controls">
-                        <input name="title" type="text" class="input-xlarge" id="input01">
+                        <input  type="text" name="title" class="input-xlarge" id="input01">
                     </div>
                 </div>
                 {{ method_field('PUT') }}

@@ -77,7 +77,7 @@ class TagController extends Controller
     {
         if(is_numeric($id)){
             $model = Tag::find($id);
-            $model->name = $request->input("name");
+            $model->title = $request->input("title");
             $model->save();
 
             return redirect("/admin/tag");
