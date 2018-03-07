@@ -14,9 +14,9 @@
 //Route::get('/', function () {
 //    return view('welcome');
 //});
-Route::get('/', 'StaticPagesController@home')->name('home');
-Route::get('/help', 'StaticPagesController@help')->name('help');
-Route::get('/about', 'StaticPagesController@about')->name('about');
+Route::get('/',function (){
+    return redirect()->route('indexs');
+});
 
 Route::get('/signup', 'UsersController@create')->name('signup');
 
@@ -30,7 +30,7 @@ Route::group(['prefix' => 'admin/entry','namespace' => 'Admin'], function () {
 Route::group(['middleware' => 'admin.auth','prefix' => 'admin','namespace' => 'Admin'], function () {
      Route::get('logout', 'BaseController@logout');
     Route::group(['prefix' => 'index'], function () {
-        Route::get('index', 'IndexController@index');
+        Route::get('index', 'IndexController@index')->name('indexs');;
     });
     Route::group(['prefix' => 'member'], function () {
         Route::get('passwordFrom', 'MemberController@passwordFrom');
