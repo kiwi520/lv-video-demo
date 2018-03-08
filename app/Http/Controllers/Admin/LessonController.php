@@ -115,18 +115,20 @@ class LessonController extends Controller
         }
         $file = $request->file('file');
 
+        var_dump($file);
+
         if ($file->isValid()) {
             // 获取文件相关信息
             $originalName = $file->getClientOriginalName(); // 文件原名
-            $ext = $file->getClientOriginalExtension();     // 扩展名
-            $realPath = $file->getRealPath();   //临时文件的绝对路径
-            $type = $file->getClientMimeType();     // image/jpeg
+//            $ext = $file->getClientOriginalExtension();     // 扩展名
+//            $realPath = $file->getRealPath();   //临时文件的绝对路径
+//            $type = $file->getClientMimeType();     // image/jpeg
 
             // 上传文件
-            $filename = date('Ymd/His').$originalName;
+//            $filename = date('Ymd/His').$originalName;
             // 使用我们新建的uploads本地存储空间（目录）
             $path = $file->store('video-desc', 'lesson');
-            $img = Image::make('lesson/'.$path)->resize(200, 200);
+            $img = Image::make('lesson/'.$path)->resize(200, 250);
             $img->save('lesson/'.$path);
             return response()->json([
                 'status_code' => 200,
