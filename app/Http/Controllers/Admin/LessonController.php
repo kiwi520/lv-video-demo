@@ -115,7 +115,7 @@ class LessonController extends Controller
         }
         $file = $request->file('file');
 
-        var_dump($file);
+//        var_dump($file);
 
         if ($file->isValid()) {
             // 获取文件相关信息
